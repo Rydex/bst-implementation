@@ -16,13 +16,14 @@ int main() {
 	BSTNode numbers_tree = build(numbers);
 	std::vector<int> in_order = numbers_tree.in_order_traversal();
 
-	std::cout << '[';
-	for(int i=0; i<(int)in_order.size(); i++) {
-		std::cout << in_order.at(i);
+	// std::cout << '[';
+	// for(int i=0; i<(int)in_order.size(); i++) {
+	// 	std::cout << in_order.at(i);
 
-		if(i!=(int)in_order.size()-1) {
-			std::cout << ", ";
-		}
-	}
-	std::cout << "]\n";
+	// 	if(i!=(int)in_order.size()-1) {
+	// 		std::cout << ", ";
+	// 	}
+	// }
+	// std::cout << "]\n";
+	std::cout << std::boolalpha << numbers_tree.search(20) << '\n';
 }
