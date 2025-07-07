@@ -15,7 +15,10 @@ private:
 
   u_node root;
 
+  void m_add_leaf(int key, u_node&& ptr);
+
 public:
   BST();
   u_node create_leaf(int value);
+  void add_leaf(int key);
 };
