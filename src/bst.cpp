@@ -1,34 +1,55 @@
 #include "bst.h"
 #include <format>
+#include <iostream>
 
 BST::BST() {
   root = nullptr;
 }
 
-BST::u_node BST::create_leaf(int value) {
+BST::s_node BST::create_leaf(int value) {
   return std::make_unique<Node>(value);
 }
 
 void BST::add_leaf(int value) {
-  m_add_leaf(value, std::move(root));
+  m_add_leaf(value, root);
 }
 
-void BST::m_add_leaf(int value, u_node&& ptr) {
+void BST::m_add_leaf(int value, const s_node& ptr) {
   if(!ptr) {
     root = create_leaf(value);
   } else if(value < ptr->value) {
     if(ptr->left) {
-      m_add_leaf(value, std::move(ptr->left));
+      m_add_leaf(value, ptr->left);
     } else {
       ptr->left = create_leaf(value);
     }
   } else if(value > ptr->value) {
     if(ptr->right) {
-      m_add_leaf(value, std::move(ptr->right));
+      m_add_leaf(value, ptr->right);
     } else {
       ptr->right = create_leaf(value);
     }
   } else {
     throw std::runtime_error(std::format("key {} already exists", value));
+  }
+}
+
+void BST::pretty_print() const {
+  m_pretty_print(root);
+}
+
+void BST::m_pretty_print(const s_node& ptr) const {
+  // recursively traverse tree from lowest to highest
+  if(root) {
+    if(ptr->left) { // step 1 go left part recursively if possible
+      m_pretty_print(ptr->left);
+    }
+    std::cout << ptr->value << ' '; // step 2 just print
+    if(ptr->right) { // step 3 go right part recursively if possible
+      m_pretty_print(ptr->right);
+    }
+
+  } else {
+    std::cout << "tree is empty\n";
   }
 }
