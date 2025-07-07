@@ -53,3 +53,23 @@ void BST::m_pretty_print(const s_node& ptr) const {
     std::cout << "tree is empty\n";
   }
 }
+
+BST::s_node BST::return_node(int value) const {
+  return m_return_node(value, root);
+}
+
+BST::s_node BST::m_return_node(int value, const s_node& ptr) const {
+  if(ptr) {
+    if(ptr->value == value) {
+      return ptr;
+    } else {
+      if(value < ptr->value) {
+        return m_return_node(value, ptr->left);
+      } else {
+        return m_return_node(value, ptr->right);
+      }
+    }
+  } else {
+    return nullptr;
+  }
+}
