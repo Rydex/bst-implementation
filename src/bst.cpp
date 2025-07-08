@@ -73,3 +73,11 @@ BST::s_node BST::m_return_node(int value, const s_node& ptr) const {
     return nullptr;
   }
 }
+
+std::optional<int> BST::return_root_key() const {
+  if(root) {
+    return root->value;
+  } else {
+    return std::nullopt;
+  }
+}

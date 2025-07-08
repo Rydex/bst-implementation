@@ -1,4 +1,6 @@
 #include <memory>
+#include <optional>
+
 class BST {
 private:
   struct Node;
@@ -25,4 +27,5 @@ public:
   void add_leaf(int key);
   void pretty_print() const; // in order from least to greatest
   s_node return_node(int value) const;
+  std::optional<int> return_root_key() const;
 };
