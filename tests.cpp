@@ -18,11 +18,15 @@ int main() {
   
   cout << "printing in order\nfter adding numbers\n";
 
-  for(int i=0; i<16; i++) {
+  for(int i=0; i<16; ++i) {
     my_tree.add_leaf(keys.at(i));
   }
 
   my_tree.pretty_print();
+
+  cout << '\n';
+
+  my_tree.print_children(my_tree.return_node(100)->value);
 
   return 0;
 }
