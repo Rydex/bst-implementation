@@ -28,4 +28,5 @@ public:
   void pretty_print() const; // in order from least to greatest
   s_node return_node(int value) const;
   std::optional<int> return_root_key() const;
+  void print_children(int key) const;
 };

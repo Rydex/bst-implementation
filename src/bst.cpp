@@ -81,3 +81,21 @@ std::optional<int> BST::return_root_key() const {
     return std::nullopt;
   }
 }
+
+void BST::print_children(int key) const {
+  s_node ptr = return_node(key); // if that key exists just return pointer to it
+  // this wil be nullptr if key doesnt exist
+
+  if(ptr) {
+    std::cout << std::format("parent node: {}", ptr->value)
+              << '\n';
+
+    !ptr->left ? std::cout << "left child is null\n"
+               : std::cout << std::format("left child: {}", ptr->left->value) << '\n';
+
+    !ptr->right ? std::cout << "right child is null\n"
+                : std::cout << std::format("right child: {}", ptr->right->value) << '\n';
+  } else {
+    std::cout << std::format("key {} does not exist in the tree", key) << '\n';
+  }
+}
